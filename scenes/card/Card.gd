@@ -1,10 +1,21 @@
+# Card.gd
 extends Node2D
 
-export(String) var Name
-export(int) var Value
-export(String) var Suit
-export(String) var _Color
-export(int) var Frame
+class_name Card
+
+export var Name:String
+export var Value:int
+export var Suit:String
+export var _Color:String
+export var Frame:int
+export var IsActave:bool
+
+signal activated
+signal flipped
+
+
+func _init() -> void:
+	pass
 
 
 func _ready():
@@ -18,3 +29,4 @@ func _process(delta):
 		var random = randi()% 53 + 1
 		$Sprite.frame = random
 		print("Cards NOT removed, changed card sprites...\n")
+

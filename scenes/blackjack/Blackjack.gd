@@ -1,12 +1,18 @@
+# Blackjack.gd
 extends Node
+
+#const DECKDATA = preload("res://scenes/deck/DeckData.gd")
 
 export(PackedScene) var cardScene
 export(int) var number
 
 var addedChildren = []
-const c = preload("res://scenes/deck/deck_data.gd")
+
+signal game_started
+signal game_ended
+
 func _ready():
-	var t = c.new()
+#	var t = DECKDATA.new()
 	pass # Replace with function body.
 
 
@@ -53,3 +59,4 @@ func _on_StartTimer_timeout():
 	initCards()
 	$StartTimer.stop()
 	print("Timer Stoped!\n")
+

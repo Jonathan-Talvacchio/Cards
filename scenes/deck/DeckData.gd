@@ -1,4 +1,7 @@
-extends Resource
+# DeckData.gd
+extends Node
+
+class_name DeckData
 
 enum {CLUBS, DIAMONDS, HARTS, SPADES}
 enum {TWO = 0, JACK = 9, QUEEN, KING, ACE = 12}
@@ -6,23 +9,14 @@ enum {TWO = 0, JACK = 9, QUEEN, KING, ACE = 12}
 const DECK_SIZE := 52
 var deck_dictionary := {}
 
-class cd : public Object{
-	
-}
-	var card
-	func _init(sd: Array):
-		card = sd
 
 func _init():
-	add_deck()
-#	print(deck_dictionary["BLACKJACK"])
-	cd.new(deck_dictionary[1])
-	print(cd.card)
+	add_deck("BLACKJACK")
 	for i in deck_dictionary["BLACKJACK"]:
 		print(i)
 
 
-func add_deck(n := 1):
+func add_deck(name:String, n := 1):
 	var new_deck := []
 	var deck_count := 0
 	while deck_count < n:
@@ -46,7 +40,7 @@ func add_deck(n := 1):
 				value = 2
 				suit += 1
 		deck_count += 1
-	deck_dictionary["BLACKJACK"] = new_deck
+	deck_dictionary[name] = new_deck
 
 
 func create_card(suit: int, value: int) -> Dictionary:
@@ -55,6 +49,7 @@ func create_card(suit: int, value: int) -> Dictionary:
 	new_card["SUIT"] = suit
 	new_card["VALUE"] = value
 	new_card["FACE_UP"] = false
+	new_card["ACTAVE"] = false
 	
 	#return new card dictionary
 	return new_card
