@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://scenes/blackjack/Blackjack.gd" type="Script" id=1]
+[ext_resource path="res://scenes/blackjack/blackjack.gd" type="Script" id=1]
 [ext_resource path="res://scenes/card/card.tscn" type="PackedScene" id=2]
+[ext_resource path="res://sprites/cards/set_0/faces/clubs_2_0.png" type="Texture" id=3]
 
 [node name="Blackjack" type="Node"]
 script = ExtResource( 1 )
@@ -10,4 +11,117 @@ number = 4
 
 [node name="StartTimer" type="Timer" parent="."]
 wait_time = 2.0
+
+[node name="BlackjackUI" type="Control" parent="."]
+editor/display_folded = true
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="VSplitContainer" type="VBoxContainer" parent="BlackjackUI"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="ComputerContainer" type="MarginContainer" parent="BlackjackUI/VSplitContainer"]
+margin_right = 1024.0
+margin_bottom = 298.0
+size_flags_vertical = 3
+
+[node name="CenterContainer" type="CenterContainer" parent="BlackjackUI/VSplitContainer/ComputerContainer"]
+margin_right = 1024.0
+margin_bottom = 298.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="BlackjackUI/VSplitContainer/ComputerContainer/CenterContainer"]
+margin_left = 298.0
+margin_top = 54.0
+margin_right = 726.0
+margin_bottom = 244.0
+
+[node name="card1" type="TextureRect" parent="BlackjackUI/VSplitContainer/ComputerContainer/CenterContainer/HBoxContainer"]
+margin_right = 140.0
+margin_bottom = 190.0
+texture = ExtResource( 3 )
+
+[node name="card2" type="TextureRect" parent="BlackjackUI/VSplitContainer/ComputerContainer/CenterContainer/HBoxContainer"]
+margin_left = 144.0
+margin_right = 284.0
+margin_bottom = 190.0
+texture = ExtResource( 3 )
+
+[node name="card3" type="TextureRect" parent="BlackjackUI/VSplitContainer/ComputerContainer/CenterContainer/HBoxContainer"]
+margin_left = 288.0
+margin_right = 428.0
+margin_bottom = 190.0
+texture = ExtResource( 3 )
+
+[node name="PlayerContainer" type="MarginContainer" parent="BlackjackUI/VSplitContainer"]
+margin_top = 302.0
+margin_right = 1024.0
+margin_bottom = 600.0
+size_flags_vertical = 3
+
+[node name="CenterContainer" type="CenterContainer" parent="BlackjackUI/VSplitContainer/PlayerContainer"]
+margin_right = 1024.0
+margin_bottom = 298.0
+
+[node name="AllHands" type="HBoxContainer" parent="BlackjackUI/VSplitContainer/PlayerContainer/CenterContainer"]
+margin_left = 298.0
+margin_top = 54.0
+margin_right = 726.0
+margin_bottom = 244.0
+
+[node name="Hand" type="HBoxContainer" parent="BlackjackUI/VSplitContainer/PlayerContainer/CenterContainer/AllHands"]
+margin_right = 428.0
+margin_bottom = 190.0
+
+[node name="card1" type="TextureRect" parent="BlackjackUI/VSplitContainer/PlayerContainer/CenterContainer/AllHands/Hand"]
+margin_right = 140.0
+margin_bottom = 190.0
+texture = ExtResource( 3 )
+
+[node name="card2" type="TextureRect" parent="BlackjackUI/VSplitContainer/PlayerContainer/CenterContainer/AllHands/Hand"]
+margin_left = 144.0
+margin_right = 284.0
+margin_bottom = 190.0
+texture = ExtResource( 3 )
+
+[node name="card3" type="TextureRect" parent="BlackjackUI/VSplitContainer/PlayerContainer/CenterContainer/AllHands/Hand"]
+margin_left = 288.0
+margin_right = 428.0
+margin_bottom = 190.0
+texture = ExtResource( 3 )
+
+[node name="ComputerHand" type="Node2D" parent="."]
+
+[node name="Card" parent="ComputerHand" instance=ExtResource( 2 )]
+position = Vector2( 350, 160 )
+
+[node name="Card2" parent="ComputerHand" instance=ExtResource( 2 )]
+position = Vector2( 420, 160 )
+
+[node name="Card3" parent="ComputerHand" instance=ExtResource( 2 )]
+position = Vector2( 490, 160 )
+
+[node name="Card4" parent="ComputerHand" instance=ExtResource( 2 )]
+position = Vector2( 560, 160 )
+
+[node name="Card5" parent="ComputerHand" instance=ExtResource( 2 )]
+position = Vector2( 630, 160 )
+
+[node name="PlayerHand" type="Node2D" parent="."]
+
+[node name="Card" parent="PlayerHand" instance=ExtResource( 2 )]
+position = Vector2( 350, 448 )
+
+[node name="Card2" parent="PlayerHand" instance=ExtResource( 2 )]
+position = Vector2( 420, 448 )
+
+[node name="Card3" parent="PlayerHand" instance=ExtResource( 2 )]
+position = Vector2( 490, 448 )
+
+[node name="Card4" parent="PlayerHand" instance=ExtResource( 2 )]
+position = Vector2( 560, 448 )
+
+[node name="Card5" parent="PlayerHand" instance=ExtResource( 2 )]
+position = Vector2( 630, 448 )
 [connection signal="timeout" from="StartTimer" to="." method="_on_StartTimer_timeout"]

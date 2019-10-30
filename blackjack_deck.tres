@@ -1,0 +1,9 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://scenes/deck/deck_data.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+number_of_decks = 1
+max_value = 10
+min_value = 2

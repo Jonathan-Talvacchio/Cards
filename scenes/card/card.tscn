@@ -1,21 +1,22 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://scenes/card/Card.gd" type="Script" id=1]
-[ext_resource path="res://sprites/cards/set_C/Spritesheet/card-face-spritesheet.png" type="Texture" id=2]
+[ext_resource path="res://scenes/card/card.gd" type="Script" id=1]
+[ext_resource path="res://sprites/cards/set_0/faces/clubs_4_0.png" type="Texture" id=2]
 
-[sub_resource type="AtlasTexture" id=1]
-flags = 4
-atlas = ExtResource( 2 )
-region = Rect2( 1, 1, 1276, 1150 )
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 70, 96 )
 
 [node name="Card" type="Node2D"]
+position = Vector2( 70, 96 )
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_group_": true
 }
 
 [node name="Sprite" type="Sprite" parent="."]
-texture = SubResource( 1 )
-vframes = 6
-hframes = 9
-frame = 1
+texture = ExtResource( 2 )
+
+[node name="KinematicBody2D" type="KinematicBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="KinematicBody2D"]
+shape = SubResource( 1 )
